@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PC-Refresh-Kit - Remettez n'importe quel PC Windows à neuf depuis une clé USB. 16 modules, GUI cockpit, réversible. Gratuit et open-source.">
+    <meta name="keywords" content="PC remise à neuf, PowerShell, Windows 10, Windows 11, debloat, nettoyage PC, outil réparateur, open-source">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Trimko">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="PC-Refresh-Kit - Remettez un PC Windows à neuf depuis une clé USB">
+    <meta property="og:description" content="16 modules PowerShell, interface GUI cockpit, 100 % local, réversible. Gratuit et open-source.">
+    <meta property="og:url" content="https://kit.trimko.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PC-Refresh-Kit">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PC-Refresh-Kit - Remettez un PC Windows à neuf">
+    <meta name="twitter:description" content="16 modules PowerShell, GUI cockpit, 100 % local. Gratuit et open-source.">
+
+    <link rel="canonical" href="https://kit.trimko.com/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>PC-Refresh-Kit - Remettez un PC Windows à neuf depuis une clé USB</title>
+
+    <!-- Applique le thème sauvegardé avant le rendu pour éviter le flash -->
+    <script>
+        (function () {
+            var t = localStorage.getItem('prk-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+</head>
+<body>
+
+<!-- ========================================
+     Header
+======================================== -->
+<header class="header" id="site-header">
+    <nav class="nav container" aria-label="Navigation principale">
+        <a href="/" class="nav__logo" aria-label="PC-Refresh-Kit - Accueil">
+            <span class="nav__logo-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            </span>
+            <span class="nav__logo-text">PC-Refresh-Kit</span>
+        </a>
+
+        <ul class="nav__links" role="list">
+            <li><a href="#modules" class="nav__link">Modules</a></li>
+            <li><a href="#confiance" class="nav__link">Confiance</a></li>
+            <li><a href="#pro" class="nav__link">Pro</a></li>
+            <li><a href="#faq" class="nav__link">FAQ</a></li>
+        </ul>
+
+        <div class="nav__actions">
+            <button class="theme-toggle" data-theme-toggle aria-label="Changer de thème">
+                <!-- Soleil (mode dark actif -> clic passe en light) -->
+                <svg class="theme-toggle__icon theme-toggle__icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <!-- Lune (mode light actif -> clic passe en dark) -->
+                <svg class="theme-toggle__icon theme-toggle__icon--moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <a href="https://github.com/trimko-labs/PC-Refresh-Kit/releases/latest"
+               class="btn-header-cta"
+               target="_blank" rel="noopener noreferrer"
+               id="telecharger">
+                Télécharger
+            </a>
+        </div>
+    </nav>
+</header>
+
+<!-- ========================================
+     Hero
+======================================== -->
+<main id="main-content">
+
+<section class="hero" aria-labelledby="hero-title">
+    <div class="container hero__container">
+
+        <!-- Texte -->
+        <div class="hero__content">
+            <span class="hero__badge" aria-label="Statut : open-source, gratuit">
+                <span class="hero__badge-dot" aria-hidden="true"></span>
+                Open-source - Gratuit - PowerShell natif
+            </span>
+
+            <h1 class="hero__title" id="hero-title">
+                Remettez n'importe quel PC Windows<br>
+                <span class="hero__title-accent">à neuf depuis une clé USB</span>
+            </h1>
+
+            <p class="hero__subtitle">
+                16 modules automatisés, une interface cockpit simple,
+                tout se passe en local sur la machine. Réversible, sans installation,
+                sans données envoyées.
+            </p>
+
+            <div class="hero__cta">
+                <a href="https://github.com/trimko-labs/PC-Refresh-Kit/releases/latest"
+                   class="btn btn--primary btn--lg"
+                   target="_blank" rel="noopener noreferrer"
+                   aria-label="Télécharger la dernière version de PC-Refresh-Kit (GitHub)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Télécharger gratuitement
+                </a>
+                <a href="#pro" class="btn btn--outline btn--lg">
+                    Découvrir Pro
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+
+            <p class="hero__note" aria-label="Zéro installation, aucune donnée envoyée">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Zéro installation - Windows 10 et 11 - PS 5.1 natif
+            </p>
+        </div>
+
+        <!-- Terminal simulé -->
+        <div class="hero__terminal" aria-hidden="true">
+            <div class="terminal-window" role="presentation">
+                <div class="terminal-window__bar">
+                    <span class="terminal-dot terminal-dot--red"></span>
+                    <span class="terminal-dot terminal-dot--amber"></span>
+                    <span class="terminal-dot terminal-dot--green"></span>
+                    <span class="terminal-window__title">PC-Refresh-Kit - Cockpit</span>
+                </div>
+                <div class="terminal-window__body" id="terminal-body">
+                    <!-- Rempli dynamiquement par js/main.js -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ========================================
+     Aperçu GUI (placeholder)
+======================================== -->
+<section class="section section--alt" aria-labelledby="gui-title">
+    <div class="container" style="text-align: center;">
+        <span class="section__eyebrow">Interface cockpit</span>
+        <h2 class="section__title" id="gui-title" style="margin-bottom: 1.75rem;">
+            Une interface graphique, pas de ligne de commande à taper
+        </h2>
+        <p class="section__subtitle" style="margin-bottom: 2.5rem;">
+            Double-cliquez sur <code style="font-family: monospace; background: var(--color-bg); padding: 0.15em 0.4em; border-radius: 4px; border: 1px solid var(--color-border); font-size: 0.9em;">Lancer.bat</code>,
+            cochez les modules souhaités, cliquez Lancer. Le déroulement s'affiche en direct.
+        </p>
+
+        <!-- Placeholder image cockpit GUI -->
+        <figure style="
+            width: 100%;
+            max-width: 820px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border: 1px dashed var(--color-border);
+            border-radius: 12px;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        " role="img" aria-label="Aperçu du cockpit GUI - image à venir">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <figcaption style="color: var(--color-text-muted); font-size: 0.9rem; text-align: center; line-height: 1.5;">
+                Aperçu du cockpit<br>
+                <span style="font-size: 0.8rem; opacity: 0.7;">
+                    (screenshot à venir - en attente de la PR-4)
+                </span>
+            </figcaption>
+        </figure>
+        <!-- Fichier attendu : img/gui-cockpit.png -->
+        <!-- Remplacer le bloc <figure> ci-dessus par : -->
+        <!-- <img src="img/gui-cockpit.png" alt="Cockpit GUI de PC-Refresh-Kit" style="max-width:820px; border-radius:12px; border:1px solid var(--color-border); margin: 0 auto;"> -->
+    </div>
+</section>
+
+<!-- ========================================
+     Confiance
+======================================== -->
+<section id="confiance" class="section" aria-labelledby="trust-title">
+    <div class="container">
+        <header class="section__header">
+            <span class="section__eyebrow">Pourquoi lui faire confiance</span>
+            <h2 class="section__title" id="trust-title">Conçu pour être sûr, pas juste pratique</h2>
+            <p class="section__subtitle">
+                Un script PowerShell administrateur, ça mérite d'être audité.
+                Voici pourquoi celui-ci est différent.
+            </p>
+        </header>
+
+        <div class="trust-grid">
+
+            <!-- Open-source -->
+            <article class="trust-card">
+                <div class="trust-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </div>
+                <h3 class="trust-card__title">100 % open-source</h3>
+                <p class="trust-card__text">Le code source complet est lisible sur GitHub. Pas de binaire opaque, pas d'installeur.</p>
+                <a href="https://github.com/trimko-labs/PC-Refresh-Kit" class="trust-card__link" target="_blank" rel="noopener noreferrer">
+                    Voir le code
+                    <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </article>
+
+            <!-- CI verte -->
+            <article class="trust-card">
+                <div class="trust-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </div>
+                <h3 class="trust-card__title">Tests automatisés</h3>
+                <p class="trust-card__text">Chaque fonction critique est couverte par des tests Pester. La CI tourne à chaque commit.</p>
+            </article>
+
+            <!-- 100 % local -->
+            <article class="trust-card">
+                <div class="trust-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <h3 class="trust-card__title">Zéro donnée envoyée</h3>
+                <p class="trust-card__text">Aucune connexion sortante hormis Windows Update et winget. Vos données ne quittent jamais la machine.</p>
+            </article>
+
+            <!-- Réversible -->
+            <article class="trust-card">
+                <div class="trust-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
+                </div>
+                <h3 class="trust-card__title">Réversible en un clic</h3>
+                <p class="trust-card__text">Le module Undo défait les actions des modules 12 et 13 dans l'ordre inverse. Un manifeste trace chaque changement.</p>
+            </article>
+
+            <!-- Dry-run -->
+            <article class="trust-card">
+                <div class="trust-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <h3 class="trust-card__title">Aperçu sans rien modifier</h3>
+                <p class="trust-card__text">Le mode <code style="font-size: 0.85em;">-WhatIf</code> liste tout ce qui serait fait, sans toucher au système. Inspecter avant d'agir.</p>
+            </article>
+
+            <!-- Zéro dépendance -->
+            <article class="trust-card">
+                <div class="trust-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <h3 class="trust-card__title">Zéro dépendance</h3>
+                <p class="trust-card__text">PowerShell 5.1 est inclus dans Windows depuis 2017. Aucun module à installer, aucune connexion npm ou pip.</p>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     Modules
+======================================== -->
+<section id="modules" class="section section--alt" aria-labelledby="modules-title">
+    <div class="container">
+        <header class="section__header">
+            <span class="section__eyebrow">16 modules</span>
+            <h2 class="section__title" id="modules-title">Ce que fait le kit</h2>
+            <p class="section__subtitle">
+                Chaque module est indépendant. Lancez tout le cycle d'un coup ou choisissez
+                uniquement ce dont votre PC a besoin.
+            </p>
+        </header>
+
+        <div class="modules-grid">
+
+            <!-- Diagnostic et sauvegarde -->
+            <div class="module-group">
+                <div class="module-group__header">
+                    <span class="module-group__header-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </span>
+                    <h3 class="module-group__title">Diagnostic &amp; Sauvegarde</h3>
+                </div>
+                <div class="module-group__body">
+                    <div class="module-item">
+                        <span class="module-item__num">00</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">Diagnostic</p>
+                            <p class="module-item__desc">Inventaire complet : CPU, RAM, disques SMART, antivirus, BitLocker, pilotes en erreur, temps de boot.</p>
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <span class="module-item__num">01</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">Sauvegarde</p>
+                            <p class="module-item__desc">Point de restauration système + copie des données utilisateur, OneDrive-aware.</p>
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <span class="module-item__num">10</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">Rapport</p>
+                            <p class="module-item__desc">Rapport HTML avant/après chiffré : espace récupéré, apps retirées, état de santé machine.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sécurité -->
+            <div class="module-group">
+                <div class="module-group__header">
+                    <span class="module-group__header-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </span>
+                    <h3 class="module-group__title">Sécurité</h3>
+                </div>
+                <div class="module-group__body">
+                    <div class="module-item">
+                        <span class="module-item__num">02</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">Antivirus</p>
+                            <p class="module-item__desc">Supprime Avast/AVG, active Windows Defender, lance un scan rapide après mise à jour des signatures.</p>
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <span class="module-item__num">08</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">Comptes</p>
+                            <p class="module-item__desc">Compte admin séparé + compte courant en standard. Garde-fou : toujours au moins 2 admins.</p>
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <span class="module-item__num">13</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">BrowserPUP</p>
+                            <p class="module-item__desc">Retire les détournements de navigateur posés par policy de registre (moteur forcé, onglets forcés).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nettoyage et débloat -->
+            <div class="module-group">
+                <div class="module-group__header">
+                    <span class="module-group__header-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                    </span>
+                    <h3 class="module-group__title">Nettoyage &amp; Débloat</h3>
+                </div>
+                <div class="module-group__body">
+                    <div class="module-item">
+                        <span class="module-item__num">03</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">Débloat</p>
+                            <p class="module-item__desc">Supprime bloatware Store et OEM (Asus, Dell, HP...). Jeux Game Pass toujours protégés.</p>
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <span class="module-item__num">07</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">Nettoyage</p>
+                            <p class="module-item__desc">Vide temp/cache, DISM, SFC, défrag/TRIM selon le type de disque. +8 Go récupérés en moyenne.</p>
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <span class="module-item__num">11</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">DeepClean</p>
+                            <p class="module-item__desc">Raccourcis morts et dossiers résiduels post-débloatage. Ne touche jamais au registre.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Optimisation et confort -->
+            <div class="module-group">
+                <div class="module-group__header">
+                    <span class="module-group__header-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+                    </span>
+                    <h3 class="module-group__title">Optimisation &amp; Confort</h3>
+                </div>
+                <div class="module-group__body">
+                    <div class="module-item">
+                        <span class="module-item__num">04</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">Privacy</p>
+                            <p class="module-item__desc">Réduit la télémétrie Windows, désactive Copilot, Recall, Widgets, Search Highlights.</p>
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <span class="module-item__num">05 / 06</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">Mises à jour &amp; Logiciels</p>
+                            <p class="module-item__desc">Windows Update + winget. Installe Firefox, 7-Zip, VLC, LibreOffice (liste configurable).</p>
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <span class="module-item__num">09 / 12</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">Confort &amp; Startup</p>
+                            <p class="module-item__desc">OneDrive désactivé, extensions visibles, désactivation réversible des autostarts indésirables.</p>
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <span class="module-item__num">14</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">Undo</p>
+                            <p class="module-item__desc">Annule en LIFO les actions réversibles du dernier run. Supporte -WhatIf pour prévisualiser.</p>
+                        </div>
+                    </div>
+                    <div class="module-item">
+                        <span class="module-item__num">15</span>
+                        <div class="module-item__content">
+                            <p class="module-item__name">Réseau</p>
+                            <p class="module-item__desc">Réinitialisation de la pile réseau (Winsock, TCP/IP, DNS) pour une connexion capricieuse. Non réversible, décoché par défaut.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     Section Pro - Tableau Free vs Pro
+======================================== -->
+<section id="pro" class="section" aria-labelledby="pro-title">
+    <div class="container">
+        <header class="section__header">
+            <span class="section__eyebrow">Éditions</span>
+            <h2 class="section__title" id="pro-title">Free vs Pro</h2>
+            <p class="section__subtitle">
+                La version gratuite couvre les besoins d'un particulier ou d'un réparateur occasionnel.
+                La version Pro est pensée pour un usage professionnel régulier.
+            </p>
+        </header>
+
+        <div class="pricing-wrapper" role="region" aria-label="Tableau comparatif Free et Pro">
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Fonctionnalité</th>
+                        <th scope="col" class="pricing-col-free">Free</th>
+                        <th scope="col" class="pricing-col-pro">Pro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>16 modules de remise à neuf</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>Interface cockpit GUI</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>Module Undo (réversibilité)</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>Mode dry-run (-WhatIf)</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>Rapport HTML avant/après chiffré</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>Profils d'intervention préconfigurés</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>Licence open-source MIT</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                        <td class="check" aria-label="Inclus">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>Rapport marque blanche (logo client)</td>
+                        <td class="cross" aria-label="Non inclus">-</td>
+                        <td class="soon" aria-label="Bientôt disponible">bientôt</td>
+                    </tr>
+                    <tr>
+                        <td>Déploiement multi-PC en série</td>
+                        <td class="cross" aria-label="Non inclus">-</td>
+                        <td class="soon" aria-label="Bientôt disponible">bientôt</td>
+                    </tr>
+                    <tr>
+                        <td>Base bloatware à jour (abonnement)</td>
+                        <td class="cross" aria-label="Non inclus">-</td>
+                        <td class="soon" aria-label="Bientôt disponible">bientôt</td>
+                    </tr>
+                    <tr>
+                        <td>Support prioritaire</td>
+                        <td class="cross" aria-label="Non inclus">-</td>
+                        <td class="soon" aria-label="Bientôt disponible">bientôt</td>
+                    </tr>
+                    <tr class="pricing-cta-row">
+                        <td>&nbsp;</td>
+                        <td>
+                            <a href="https://github.com/trimko-labs/PC-Refresh-Kit/releases/latest"
+                               class="btn btn--outline"
+                               target="_blank" rel="noopener noreferrer">
+                                Télécharger Free
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#newsletter" class="btn btn--primary">
+                                Rejoindre la liste
+                            </a>
+                            <span class="pricing-cta-note">Accès Pro en avant-première</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     Newsletter / Capture email
+======================================== -->
+<section id="newsletter" class="section section--alt" aria-labelledby="newsletter-title">
+    <div class="container newsletter-section">
+        <div class="newsletter-box">
+            <span class="section__eyebrow">Accès anticipé</span>
+            <h2 class="section__title" id="newsletter-title">
+                Recevez les mises à jour +<br>l'accès Pro en avant-première
+            </h2>
+            <p class="section__subtitle" style="margin-bottom: 0;">
+                Soyez notifié des nouvelles versions et des modules à venir.
+                Les abonnés à la liste seront les premiers à tester la version Pro.
+            </p>
+
+            <!-- MAILERLITE: formulaire a integrer en Lot C (ID a venir) -->
+            <!-- Le markup ci-dessous est inerte (pas de POST) - à remplacer par le snippet MailerLite -->
+            <div class="newsletter-form-placeholder" role="presentation" aria-label="Formulaire de capture email - en cours d'intégration">
+                <input
+                    type="email"
+                    class="newsletter-form-placeholder__input"
+                    placeholder="votre@email.com"
+                    aria-label="Adresse email"
+                    disabled
+                    aria-disabled="true"
+                >
+                <button class="btn btn--primary" disabled aria-disabled="true">
+                    M'inscrire
+                </button>
+            </div>
+            <!-- FIN MAILERLITE -->
+
+            <p class="newsletter-disclaimer">
+                En vous inscrivant, vous acceptez de recevoir des emails sur les mises à jour de PC-Refresh-Kit
+                et l'accès anticipé à la version Pro. Un email de confirmation vous sera envoyé (double opt-in).
+                Désinscription en un clic à tout moment.
+                <br>Voir la <a href="politique-confidentialite.html">politique de confidentialité</a>.
+            </p>
+
+            <p class="newsletter-free-note">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Le téléchargement gratuit ne nécessite aucun email.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     FAQ Sécurité
+======================================== -->
+<section id="faq" class="section" aria-labelledby="faq-title">
+    <div class="container">
+        <header class="section__header">
+            <span class="section__eyebrow">Questions fréquentes</span>
+            <h2 class="section__title" id="faq-title">Avant de lancer un script admin...</h2>
+            <p class="section__subtitle">
+                Les vraies questions de sécurité méritent des vraies réponses.
+            </p>
+        </header>
+
+        <div class="faq-list" role="list">
+
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-1-answer">
+                    Est-ce dangereux pour mon PC ?
+                    <span class="faq-question__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </span>
+                </button>
+                <div class="faq-answer" id="faq-1-answer" role="region">
+                    <div class="faq-answer__inner">
+                        <p>Le kit commence toujours par créer un point de restauration système (module 01). Toutes les actions destructives demandent une confirmation interactive. Les fichiers personnels (photos, documents) ne sont jamais supprimés ni déplacés par aucun module.</p>
+                        <p>Le mode <code>-WhatIf</code> vous permet de lire exactement ce qui serait fait sans rien modifier. Lancez-le d'abord pour inspecter en toute sécurité.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-2-answer">
+                    Pourquoi PowerShell et pas un installeur .exe ?
+                    <span class="faq-question__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </span>
+                </button>
+                <div class="faq-answer" id="faq-2-answer" role="region">
+                    <div class="faq-answer__inner">
+                        <p>PowerShell 5.1 est inclus dans Windows depuis 2017 et n'exige aucune installation. C'est le seul langage natif capable d'administrer l'ensemble des couches Windows (WMI, registre, AppX, tâches planifiées) sans dépendance externe.</p>
+                        <p>Surtout : le code source est lisible. Chaque ligne est visible sur GitHub. Un .exe compilé ne l'est pas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-3-answer">
+                    Windows ou SmartScreen bloque le fichier, que faire ?
+                    <span class="faq-question__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </span>
+                </button>
+                <div class="faq-answer" id="faq-3-answer" role="region">
+                    <div class="faq-answer__inner">
+                        <p>C'est normal pour un fichier téléchargé depuis internet. Windows marque tout fichier non signé avec un "Mark of the Web" et SmartScreen l'affiche en avertissement.</p>
+                        <p><strong>Méthode 1 (recommandée) :</strong> Clic droit sur le fichier .zip téléchargé - Propriétés - cocher "Débloquer" en bas - OK. Dézipper ensuite.</p>
+                        <p><strong>Méthode 2 :</strong> Si la boîte "Windows a protégé votre PC" s'affiche, cliquer "Informations complémentaires" puis "Exécuter quand même".</p>
+                        <p>Le code est consultable sur GitHub avant de débloquer quoi que ce soit.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-4-answer">
+                    Mes données personnelles sont-elles envoyées quelque part ?
+                    <span class="faq-question__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </span>
+                </button>
+                <div class="faq-answer" id="faq-4-answer" role="region">
+                    <div class="faq-answer__inner">
+                        <p>Non. Le kit ne fait aucune connexion sortante hormis celles explicitement demandées par l'utilisateur : Windows Update (module 05) et winget pour installer des logiciels (module 06).</p>
+                        <p>Aucune télémétrie, aucun envoi de logs, aucun compte requis. Tout reste sur la machine ou sur la clé USB.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-5-answer">
+                    Puis-je annuler ce que le kit a fait ?
+                    <span class="faq-question__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </span>
+                </button>
+                <div class="faq-answer" id="faq-5-answer" role="region">
+                    <div class="faq-answer__inner">
+                        <p>Partiellement, selon les modules. Les modules 12 (Startup) et 13 (BrowserPUP) sont entièrement réversibles via le module 14 (Undo) : il lit le manifeste d'annulation écrit pendant le run et défait chaque action dans l'ordre inverse.</p>
+                        <p>Le point de restauration système créé par le module 01 permet de revenir à l'état initial complet si nécessaire.</p>
+                        <p>Les suppressions de bloatware (module 03) ne sont pas réversibles sans le point de restauration - raison de plus pour ne pas le sauter.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ========================================
+     Footer
+======================================== -->
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <div class="footer__grid">
+
+            <div class="footer__brand">
+                <a href="/" class="footer__logo" aria-label="PC-Refresh-Kit - Accueil">
+                    <span class="footer__logo-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                    </span>
+                    <span>PC-Refresh-Kit</span>
+                </a>
+                <p class="footer__tagline">
+                    Kit PowerShell de remise à neuf de PC Windows. Open-source, gratuit, réversible.
+                    Un projet <a href="https://trimko.com" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent);">Trimko</a>.
+                </p>
+            </div>
+
+            <div>
+                <p class="footer__col-title">Ressources</p>
+                <ul class="footer__links" role="list">
+                    <li><a href="https://github.com/trimko-labs/PC-Refresh-Kit/releases/latest" class="footer__link" target="_blank" rel="noopener noreferrer">Télécharger</a></li>
+                    <li><a href="https://github.com/trimko-labs/PC-Refresh-Kit" class="footer__link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="https://github.com/trimko-labs/PC-Refresh-Kit/releases" class="footer__link" target="_blank" rel="noopener noreferrer">Releases</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <p class="footer__col-title">Légal</p>
+                <ul class="footer__links" role="list">
+                    <li><a href="mentions-legales.html" class="footer__link">Mentions légales</a></li>
+                    <li><a href="politique-confidentialite.html" class="footer__link">Confidentialité</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer__bottom">
+            <p class="footer__copyright">
+                &copy; 2026 Trimko
+            </p>
+            <p class="footer__disclaimer">
+                Outil fourni tel quel, sans garantie. Toute modification système est sous la responsabilité de l'utilisateur. Une sauvegarde préalable est fortement recommandée.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
