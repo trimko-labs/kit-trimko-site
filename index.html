@@ -158,34 +158,22 @@
             cochez les modules souhaités, cliquez Lancer. Le déroulement s'affiche en direct.
         </p>
 
-        <!-- Placeholder image cockpit GUI -->
-        <figure style="
-            width: 100%;
-            max-width: 820px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border: 1px dashed var(--color-border);
-            border-radius: 12px;
-            padding: 4rem 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        " role="img" aria-label="Aperçu du cockpit GUI - image à venir">
-            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-            </svg>
-            <figcaption style="color: var(--color-text-muted); font-size: 0.9rem; text-align: center; line-height: 1.5;">
-                Aperçu du cockpit<br>
-                <span style="font-size: 0.8rem; opacity: 0.7;">
-                    (screenshot à venir - en attente de la PR-4)
-                </span>
+        <figure style="width: 100%; max-width: 820px; margin: 0 auto;">
+            <img src="img/gui-cockpit.png"
+                 alt="Cockpit graphique de PC-Refresh-Kit : liste des modules à cocher, profils d'intervention, actions sensibles décochées par défaut, journal d'exécution à droite"
+                 width="900" height="840" loading="lazy" decoding="async"
+                 style="width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--color-border); display: block;">
+            <figcaption style="color: var(--color-text-muted); font-size: 0.9rem; text-align: center; line-height: 1.5; margin-top: 1rem;">
+                Le cockpit en mode dry-run : les actions sensibles sont décochées par défaut,
+                le mode simulation se coche en un clic.
             </figcaption>
         </figure>
-        <!-- Fichier attendu : img/gui-cockpit.png -->
-        <!-- Remplacer le bloc <figure> ci-dessus par : -->
-        <!-- <img src="img/gui-cockpit.png" alt="Cockpit GUI de PC-Refresh-Kit" style="max-width:820px; border-radius:12px; border:1px solid var(--color-border); margin: 0 auto;"> -->
+
+        <p class="section__subtitle" style="margin-top: 2.5rem;">
+            Pour montrer le kit sans rien modifier sur la machine, double-cliquez sur
+            <code style="font-family: monospace; background: var(--color-bg); padding: 0.15em 0.4em; border-radius: 4px; border: 1px solid var(--color-border); font-size: 0.9em;">Lancer-Demo.bat</code> :
+            le cockpit s'ouvre directement en mode simulation.
+        </p>
     </div>
 </section>
 
@@ -251,7 +239,7 @@
                     <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                 </div>
                 <h3 class="trust-card__title">Aperçu sans rien modifier</h3>
-                <p class="trust-card__text">Le mode <code style="font-size: 0.85em;">-WhatIf</code> liste tout ce qui serait fait, sans toucher au système. Inspecter avant d'agir.</p>
+                <p class="trust-card__text">Le mode <code style="font-size: 0.85em;">-WhatIf</code> liste tout ce qui serait fait, sans toucher au système. <code style="font-size: 0.85em;">Lancer-Demo.bat</code> ouvre directement le cockpit dans ce mode. Inspecter avant d'agir.</p>
             </article>
 
             <!-- Zéro dépendance -->
