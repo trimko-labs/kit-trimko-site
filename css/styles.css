@@ -251,8 +251,9 @@ button {
 
 .nav__links {
     display: none;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
     list-style: none;
+    white-space: nowrap;
 }
 
 @media (min-width: 768px) {
@@ -310,7 +311,8 @@ button {
 
 /* Bouton CTA header */
 .btn-header-cta {
-    display: none;
+    display: inline-flex;
+    align-items: center;
     padding: 0.5rem 1rem;
     background-color: var(--color-accent);
     color: #0f172a;
@@ -326,9 +328,7 @@ button {
     transform: translateY(-1px);
 }
 
-@media (min-width: 768px) {
-    .btn-header-cta { display: inline-flex; align-items: center; }
-}
+
 
 /* ========================================
    Boutons
@@ -473,7 +473,7 @@ button {
 }
 
 @media (min-width: 1024px) {
-    .hero__title { font-size: var(--font-size-5xl); }
+    .hero__title { font-size: 3rem; }
 }
 
 .hero__title-accent {
@@ -1030,7 +1030,7 @@ button {
 @media (min-width: 1024px) {
     .hero__visual {
         display: block;
-        flex: 0 0 42%;
+        flex: 0 0 38%;
         min-width: 0;
     }
 }
@@ -1523,3 +1523,40 @@ button {
 @media (min-width: 900px) {
     .nav__phone-text { display: inline; }
 }
+
+/* Ajustements de la barre : rien ne doit passer a la ligne */
+.nav__phone { white-space: nowrap; }
+.nav__logo-text { white-space: nowrap; }
+.btn-header-cta { white-space: nowrap; }
+
+/* Les deux appels du hero restent cote a cote des que la place existe */
+@media (min-width: 480px) {
+    .hero__cta .btn--lg { padding-left: 1.4rem; padding-right: 1.4rem; }
+}
+
+/* ========================================
+   Contraste des boutons pleins
+   L'accent est fonce en theme clair : le texte doit etre blanc.
+   Il est clair en theme sombre : le texte redevient fonce.
+======================================== */
+.btn--primary,
+.btn-header-cta {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .btn--primary,
+[data-theme="dark"] .btn-header-cta {
+    color: #0f172a;
+}
+
+/* Le telephone reste joignable en un geste sur mobile */
+.nav__phone { display: inline-flex; }
+
+@media (max-width: 419px) {
+    .btn-header-cta { padding: 0.5rem 0.7rem; }
+    .nav__phone { padding: 0.4rem; }
+}
+
+/* La coche reste alignee sur la premiere ligne quand la note passe sur deux */
+.hero__note { align-items: flex-start; }
+.hero__note svg { margin-top: 0.35em; }
