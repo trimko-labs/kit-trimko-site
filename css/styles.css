@@ -1560,3 +1560,37 @@ button {
 /* La coche reste alignee sur la premiere ligne quand la note passe sur deux */
 .hero__note { align-items: flex-start; }
 .hero__note svg { margin-top: 0.35em; }
+
+/* ========================================
+   Bloc Qui intervient
+======================================== */
+.about {
+    max-width: 46rem;
+    margin: 0 auto;
+}
+
+.about__text {
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    margin-bottom: var(--spacing-sm);
+}
+
+.about__links {
+    margin-top: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+}
+
+.about__links a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.about__links a:hover { text-decoration: underline; }
+
+.about .section__title {
+    text-align: left;
+    margin-bottom: var(--spacing-md);
+}
+
+.about .section__eyebrow { display: block; margin-bottom: var(--spacing-sm); }
