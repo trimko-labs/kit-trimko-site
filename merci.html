@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Votre demande de devis a bien été envoyée.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/forms.css">
+
+    <title>Demande envoyée - Trimko</title>
+
+    <script>
+        (function () {
+            var t = localStorage.getItem('prk-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+</head>
+<body>
+
+<header class="header" id="site-header">
+    <nav class="nav container" aria-label="Navigation principale">
+        <a href="/" class="nav__logo" aria-label="Trimko - Accueil">
+            <img src="img/logo-trimko.webp" alt="Trimko" class="nav__logo-img nav__logo-img--light" width="400" height="94" loading="eager">
+            <img src="img/logo-trimko-dark.webp" alt="Trimko" class="nav__logo-img nav__logo-img--dark" width="400" height="94" loading="eager">
+        </a>
+        <div class="nav__actions">
+            <a href="tel:+33650530360" class="nav__phone" aria-label="Appeler le 06 50 53 03 60">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span class="nav__phone-text">06 50 53 03 60</span>
+            </a>
+            <a href="/" class="btn-header-cta">Retour au site</a>
+        </div>
+    </nav>
+</header>
+
+<main id="main-content">
+    <div class="container">
+        <div class="thanks">
+            <div class="thanks__mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h1 class="section__title">Votre demande est partie</h1>
+            <p class="section__subtitle">
+                Vous recevez une réponse sous 48 heures ouvrées. Si votre demande est urgente,
+                le téléphone reste le plus rapide.
+            </p>
+            <div class="thanks__actions">
+                <a href="tel:+33650530360" class="btn btn--primary btn--lg">06 50 53 03 60</a>
+                <a href="/" class="btn btn--outline btn--lg">Retour au site</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <div class="footer__bottom">
+            <p class="footer__copyright">&copy; 2026 Trimko</p>
+            <p class="footer__disclaimer">
+                <a href="mentions-legales.html" class="footer__link">Mentions légales</a> -
+                <a href="politique-confidentialite.html" class="footer__link">Confidentialité</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
